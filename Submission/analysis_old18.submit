@@ -1,0 +1,19 @@
+Universe = vanilla
+
+Executable = runAnalysis_old18.sh
+Arguments = $(seed) 500 200 2
+request_cpus = 2
+request_memory = 2000
+requirements = TARGET.HAS_CMS_HDFS && (TARGET.MaxJobRetirementTime >= 86400)
+x509userproxy = /tmp/myproxy #can be found by ls -ltr /tmp/ after voms-proxy-init
+
+should_transfer_files = YES
+#transfer_input_files = cmssw_setup.sh, sandbox-CMSSW_7_2_3-86c7ff0.tar.bz2
+transfer_input_files = ZZTo4L012j_5f_NLO_FXFX_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz,MG5_aMC_v2.6.5.tar.gz,madspin_run.dat,ZZTo4L01j_5f_NLO_FXFX_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz,mergeEvents.sh,mergeHeader.py,LHE_select_event.py,fragment_py_GEN_SIM.py,examine_printout.py,fragment.py
+transfer_output_files = "" 
+
+Error = log/job_$(Cluster)-$(Process).err
+Output = log/job_$(Cluster)-$(Process).out
+Log = log/job_$(Cluster).log
+
+Queue seed from seed_list.txt
